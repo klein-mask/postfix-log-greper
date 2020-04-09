@@ -60,7 +60,7 @@ class MailGrep:
 if __name__ == '__main__':
     args = sys.argv
 
-    if len(args) == 3:
-        MG = MailGrep(args[1], args[2])
+    if len(args) >= 3:
+        MG = MailGrep(*args)
         MG.count()
         MG.save()
