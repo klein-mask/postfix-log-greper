@@ -6,9 +6,10 @@ import os
 
 class MailGrep:
 
-    def __init__(self, input_file_path, address):
+    def __init__(self, input_file_path, address, grep_step=100):
         self.input_file_path = input_file_path
         self.address = address
+        self.grep_step = grep_step
         self.data = {
             address: 0
         }
@@ -24,7 +25,7 @@ class MailGrep:
             print('address :: ' + self.address + ' no results')
             print(e)
 
-        results = list(self.split_list(results, 100))
+        results = list(self.split_list(results, self.grep_step))
         loop_cnt = 0
         for res in results:
             try:
